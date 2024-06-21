@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 13.44 s <<< FAILURE! -- in TestSuite
+cucumberOptions.TestNGRunner.runScenario["Search experience in offer and landing page using scenario outline", "Title of your feature"](2) -- Time elapsed: 11.42 s <<< FAILURE!
+java.lang.AssertionError: expected [null] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at stepDefinitions.OfferPageStepDefinition.validate_product_name_in_offers_page_matches_with_landing_page(OfferPageStepDefinition.java:66)
+	at ✽.validate product name in offers page matches with landing page(file:///C:/Users/odibo%20ovie/JavaSelenium2024/CucumberFrameworkSelenium/./src/test/java/features/search.feature:20)
+
+cucumberOptions.TestNGRunner.runScenario["Search experience in offer and landing page using scenario outline", "Title of your feature"](3) -- Time elapsed: 11.67 s <<< FAILURE!
+java.lang.AssertionError: expected [null] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at stepDefinitions.OfferPageStepDefinition.validate_product_name_in_offers_page_matches_with_landing_page(OfferPageStepDefinition.java:66)
+	at ✽.validate product name in offers page matches with landing page(file:///C:/Users/odibo%20ovie/JavaSelenium2024/CucumberFrameworkSelenium/./src/test/java/features/search.feature:20)
+

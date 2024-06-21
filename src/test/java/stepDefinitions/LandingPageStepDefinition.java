@@ -20,6 +20,7 @@ public class LandingPageStepDefinition {
 	public String landingPageproductName;
 	public String offerPageProductName;
 	public TestContextSetup testContextSetup;
+	public LandingPage landingPage;
 	//singgle responsibility principle
 	//loosely coupled
 	//factory designed pattern
@@ -28,17 +29,22 @@ public class LandingPageStepDefinition {
 
 	public LandingPageStepDefinition(TestContextSetup testContextSetup) {
 	this.testContextSetup=testContextSetup;
+	landingPage =testContextSetup.pageObjectManager.getLandingPage();
 	}
 	
 	
 	@Given("User is on Greencart landing page")
 	public void user_is_on_greencart_landing_page() {
-	
+		landingPage.getPageTitle();
+		Assert.assertEquals(landingPage.getPageTitle(), "GreenKart - veg and fruits kart");
+		Assert.assertTrue(landingPage.getPageTitle().contains("Kart"));
+		//load balanvce autoscale  work wt security groups
+		
 		//testContextSetup. driver = new ChromeDriver();
 		//testContextSetup.driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 	}
 
-	@When("User search with shortened name {string} and extract actual name of product")
+/*	@When("User search with shortened name {string} and extract actual name of product")
 	public void user_search_with_shortened_name_and_extract_actual_name_of_product(String shortName) throws InterruptedException {
 		
 		//LandingPage landingPage = new LandingPage(testContextSetup.driver);
@@ -54,8 +60,24 @@ public class LandingPageStepDefinition {
 //		Reporter.log(shortName);
 //		Thread.sleep(2000);
 	}
+*/
 
+	@When("User search with shortened name  {string} and extract actual product")
+	public void user_search_with_shortened_name_and_extract_actual_product(String shortName) throws InterruptedException {
+		
+		//LandingPage landingPage = new LandingPage(testContextSetup.driver);
+				LandingPage landingPage = testContextSetup.pageObjectManager.getLandingPage();
+				//give user defined information
+				landingPage.searchProduct(shortName);
+				Thread.sleep(2000);
+				landingPage.getProductName().split("-")[0].trim();
+	   
+	}
 	
+	@When("Added {string} items of the selected product to cart")
+	public void added_items_of_the_selected_product_to_cart(String quantity) {
+		landingPage.incrementQuantity(Integer.parseInt(quantity));
+	}
 
 
 

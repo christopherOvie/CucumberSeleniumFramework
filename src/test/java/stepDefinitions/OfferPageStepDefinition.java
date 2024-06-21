@@ -53,14 +53,36 @@ public class OfferPageStepDefinition {
 		
 		offerPageProductName  = offerpage.getProductName();
 		
-		 Thread.sleep(2000);
+		// Thread.sleep(2000);
+		 
+		 
 		//String offerPageProductName= testContextSetup.driver.findElement(By.cssSelector("tr td:nth-child(1)")).getText();
 		//System.out.println(offerPageProductName);
 	 ;
 	}
 		@Then("validate product name in offers page matches with landing page")
-		public void validate_product_name_in_offers_page_matches_with_landing_page() {
+		public void validate_product_name_in_offers_page_matches_with_landing_page() throws InterruptedException {
+			 Thread.sleep(3000);
 			  Assert.assertEquals(offerPageProductName, testContextSetup.landingPageproductName);
 		}
+		//testContextSetup.testBase.webdriverManager()   this is my driver
+		
+		@Then("user search for the shortname  {string} in offers page")
+		public void user_search_for_the_shortname_in_offers_page(String shortName) {
+			
+			switchToOfferPage();
+			
+			//OfferPage offerpage= new OfferPage(testContextSetup. driver);
+			OfferPage offerpage= testContextSetup.pageObjectManager.getOfferPage();
+			offerpage.searchItem(shortName);
+			
+			//testContextSetup. driver.findElement(By.xpath("//input[@type='search']")).sendKeys(shortName);
+			
+			offerPageProductName  = offerpage.getProductName();
+			
+		   
+		}
+
+
 
 }
